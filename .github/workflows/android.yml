@@ -33,6 +33,7 @@ jobs:
       - name: Install Haxelib Libraries
         run: |
           haxelib setup ~/haxelib
+          haxelib install hxcpp --quiet
           haxelib install lime 8.1.3 --quiet
           haxelib install openfl 9.3.3 --quiet
           haxelib install flixel 5.6.2 --quiet
@@ -52,7 +53,7 @@ jobs:
 
       - name: Compile APK
         run: |
-          lime build android -final
+          haxelib run lime build android -final
 
       - name: Upload APK to GitHub Artifacts
         uses: actions/upload-artifact@v4
